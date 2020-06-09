@@ -1,4 +1,4 @@
-// mainConverter.java
+/// mainConverter.java
 // sub-classes to methods?
 // for an example:
 /* x coord converter into one method and
@@ -10,7 +10,7 @@ public class MainConverter
    public static void main(String[] args)
    {
       // Example
-      System.out.println(xCoordConverter(80) + ", yCoord, zCoord");
+      System.out.println(xCoordConverter(80) + ", yCoord, " + zCoordConverter(7689));
       
       
       
@@ -22,6 +22,13 @@ public class MainConverter
       convertedXCoord = xCoord/8;
       return convertedXCoord;
        
+   }
+   
+   public static int zCoordConverter(int zCoord)
+   {
+      int convertedZCoord = 0;
+      convertedZCoord = zCoord/8;
+      return convertedZCoord;
    }
    
 }
