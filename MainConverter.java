@@ -5,14 +5,28 @@
    z coord converter into one method?
  */
  
-import java.lang.Math;
+import java.lang.Math;   import java.util.Scanner;
    
 public class MainConverter
 {
    public static void main(String[] args)
    {
-      // Example
-      System.out.println(xCoordConverter(7695) + ", yCoord, " + zCoordConverter(7695));
+      //Example
+      Scanner xCoordUserInput = new Scanner(System.in);
+      System.out.print("Enter X Coordinate -->  ");
+      double xCoords = xCoordUserInput.nextDouble();
+      
+      Scanner yCoordUserInput = new Scanner(System.in);
+      System.out.print("\nEnter Y Coordinate -->  ");
+      double yCoord = yCoordUserInput.nextDouble();
+      int yCoords = (int) yCoord; 
+            
+      Scanner zCoordUserInput = new Scanner(System.in);
+      System.out.print("\nEnter Z Coordinate -->  ");
+      double zCoords = zCoordUserInput.nextDouble();
+      
+      System.out.print("\n\nPut your Nether Portal at these Coordinates: " + xCoordConverter(xCoords) + ", " + yCoords + ", " + zCoordConverter(zCoords));      
+      
       
       
       
