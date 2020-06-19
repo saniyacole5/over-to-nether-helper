@@ -1,9 +1,5 @@
 // mainConverter.java
-// sub-classes to methods?
-// for an example:
-/* x coord converter into one method and
-   z coord converter into one method?
- */
+
  
 import java.util.ArrayList;  import java.lang.Math;   import java.util.Scanner;
    
@@ -12,70 +8,28 @@ public class MainConverter
    public static void main(String[] args)
    { 
       ArrayList<String> coordArrays = new ArrayList<>();
-      System.out.print("\n\nPut your Nether Portal at these Coordinates in the Nether: " + xCoordConverter(xCoordUserInput(coordArrays)) + ", " + yCoordUserInput(coordArrays) + ", " + zCoordConverter(zCoordUserInput(coordArrays)));
+      System.out.print("\n\nPut your Nether Portal at these Coordinates in the Nether: " + coordConverter(coordUserInput(coordArrays, "X"), true) + ", " + coordConverter(coordUserInput(coordArrays, "Y"), false) + ", " + coordConverter(coordUserInput(coordArrays, "Z"), true));
    }
    
-   public static double xCoordUserInput(ArrayList<String> coordArray)
+   public static double coordUserInput(ArrayList<String> coordArray, String dialog)
    {
-      Double xCoordNum;
-      Scanner xCoordUserInput = new Scanner(System.in);
-      System.out.print("\nEnter X Coordinate -->  ");
-      String xCoord = xCoordUserInput.nextLine();
-      coordArray.add(xCoord);
+      Double coordNum;
+      Scanner coordUserInput = new Scanner(System.in);
+      System.out.print("\nEnter " + dialog + " Coordinate -->  ");  
+      String coord = coordUserInput.nextLine();
+      coordArray.add(coord);
       if(isNumeric(coordArray.get(coordArray.size() - 1)))
       {
-         xCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-         return xCoordNum;
+         coordNum = new Double(coordArray.get(coordArray.size() - 1));
+         return coordNum;
       }
       else
       {
-         System.out.println("\nDon't be Silly! Enter a NUMBER for the X Coordinate...");
-         xCoordUserInput(coordArray);
+            System.out.println("\nDon't be Silly! Enter a NUMBER for the " + dialog +  " Coordinate..."); 
+            coordUserInput(coordArray, dialog);
       }
-    xCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-    return xCoordNum; 
-   }
-   
-   public static double yCoordUserInput(ArrayList<String> coordArray)
-   {
-      Double yCoordNum;
-      Scanner yCoordUserInput = new Scanner(System.in);
-      System.out.print("\nEnter Y Coordinate -->  ");
-      String yCoord = yCoordUserInput.nextLine();
-      coordArray.add(yCoord);
-      if(isNumeric(coordArray.get(coordArray.size() - 1)))
-      {
-         yCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-         return yCoordNum;
-      }
-      else
-      {
-         System.out.println("\nDon't be Silly! Enter a NUMBER for the Y Coordinate...");
-         yCoordUserInput(coordArray);
-      }
-    yCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-    return yCoordNum; 
-   }
-   
-   public static double zCoordUserInput(ArrayList<String> coordArray)
-   {
-      Double zCoordNum;
-      Scanner zCoordUserInput = new Scanner(System.in);
-      System.out.print("\nEnter Z Coordinate -->  ");
-      String zCoord = zCoordUserInput.nextLine();
-      coordArray.add(zCoord);
-      if(isNumeric(coordArray.get(coordArray.size() - 1)))
-      {
-         zCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-         return zCoordNum;
-      }
-      else
-      {
-         System.out.println("\nDon't be Silly! Enter a NUMBER for the Z Coordinate...");
-         zCoordUserInput(coordArray);
-      }
-    zCoordNum = new Double(coordArray.get(coordArray.size() - 1));
-    return zCoordNum; 
+    coordNum = new Double(coordArray.get(coordArray.size() - 1));
+    return coordNum; 
    }
 
    public static boolean isNumeric(String str)
@@ -86,24 +40,18 @@ public class MainConverter
          return true;
       } 
       catch(NumberFormatException e)
-      {  
-         return false;  
+      {
+         return false;
       }
    }  
 
-   public static int xCoordConverter(double xCoord)
+   public static int coordConverter(double coord, boolean convert)
    {
-      int convertedXCoord = 0;
-      convertedXCoord = (int) (Math.round(xCoord/8));
-      return convertedXCoord;
-       
+      int convertedCoord = 0;
+      if(convert)
+         convertedCoord = (int) (Math.round(coord/8));
+      else
+         convertedCoord = (int) coord;
+      return convertedCoord; 
    }
-   
-   public static int zCoordConverter(double zCoord)
-   {
-      int convertedZCoord = 0;
-      convertedZCoord = (int) (Math.round(zCoord/8));
-      return convertedZCoord;
-   }
-   
 }
